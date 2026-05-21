@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from '@vercel/analytics/react'
 
 import PageLoader from '@/components/ui/PageLoader'
 import CustomCursor from '@/components/ui/CustomCursor'
@@ -50,6 +51,7 @@ export default function App() {
 
       <ScrollToTop />
       <SpeedInsights />
+      <Analytics />
     </>
   )
 }
