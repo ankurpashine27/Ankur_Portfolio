@@ -1,62 +1,50 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-scroll";
-import { motion } from "framer-motion";
-import {
-  FiGithub,
-  FiLinkedin,
-  FiTwitter,
-  FiMail,
-  FiDownload,
-  FiArrowDown,
-} from "react-icons/fi";
-import { heroData, personalInfo } from "@/data/portfolioData";
+import { useEffect, useState } from 'react'
+import { Link } from 'react-scroll'
+import { motion } from 'framer-motion'
+import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiDownload, FiArrowDown } from 'react-icons/fi'
+import { heroData, personalInfo } from '@/data/portfolioData'
 
-function useTypingEffect(
-  words,
-  typingSpeed = 80,
-  deletingSpeed = 50,
-  pauseMs = 1800,
-) {
-  const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+function useTypingEffect(words, typingSpeed = 80, deletingSpeed = 50, pauseMs = 1800) {
+  const [text, setText] = useState('')
+  const [wordIndex, setWordIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const current = words[wordIndex];
+    const current = words[wordIndex]
     const timeout = setTimeout(
       () => {
         if (!isDeleting) {
-          setText(current.slice(0, text.length + 1));
+          setText(current.slice(0, text.length + 1))
           if (text.length + 1 === current.length) {
-            setTimeout(() => setIsDeleting(true), pauseMs);
+            setTimeout(() => setIsDeleting(true), pauseMs)
           }
         } else {
-          setText(current.slice(0, text.length - 1));
+          setText(current.slice(0, text.length - 1))
           if (text.length - 1 === 0) {
-            setIsDeleting(false);
-            setWordIndex((i) => (i + 1) % words.length);
+            setIsDeleting(false)
+            setWordIndex((i) => (i + 1) % words.length)
           }
         }
       },
-      isDeleting ? deletingSpeed : typingSpeed,
-    );
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseMs]);
+      isDeleting ? deletingSpeed : typingSpeed
+    )
+    return () => clearTimeout(timeout)
+  }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseMs])
 
-  return text;
+  return text
 }
 
 const socials = [
-  { icon: FiGithub, href: personalInfo.github, label: "GitHub" },
-  { icon: FiLinkedin, href: personalInfo.linkedin, label: "LinkedIn" },
-  { icon: FiTwitter, href: personalInfo.twitter, label: "Twitter" },
-  { icon: FiMail, href: `mailto:${personalInfo.email}`, label: "Email" },
-];
+  { icon: FiGithub, href: personalInfo.github, label: 'GitHub' },
+  { icon: FiLinkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
+  { icon: FiTwitter, href: personalInfo.twitter, label: 'Twitter' },
+  { icon: FiMail, href: `mailto:${personalInfo.email}`, label: 'Email' },
+]
 
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
-};
+}
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -65,10 +53,10 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
   },
-};
+}
 
 export default function Hero() {
-  const typedText = useTypingEffect(heroData.roles);
+  const typedText = useTypingEffect(heroData.roles)
 
   return (
     <section
@@ -79,17 +67,13 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl animate-pulse pointer-events-none" />
       <div
         className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-3xl animate-pulse pointer-events-none"
-        style={{ animationDelay: "1s" }}
+        style={{ animationDelay: '1s' }}
       />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24 w-full pt-24 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: content */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div variants={containerVariants} initial="hidden" animate="visible">
             <motion.span
               variants={itemVariants}
               className="inline-block text-sm font-medium tracking-widest uppercase text-primary mb-4"
@@ -108,9 +92,7 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="h-10 mb-6">
               <span className="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-300">
                 {typedText}
-                <span className="animate-cursor-blink text-primary ml-0.5">
-                  |
-                </span>
+                <span className="animate-cursor-blink text-primary ml-0.5">|</span>
               </span>
             </motion.div>
 
@@ -122,10 +104,7 @@ export default function Hero() {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-4 mb-8"
-            >
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8">
               <Link
                 to={heroData.ctaPrimary.target}
                 smooth
@@ -146,15 +125,12 @@ export default function Hero() {
             </motion.div>
 
             {/* Social links */}
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center gap-3"
-            >
+            <motion.div variants={itemVariants} className="flex items-center gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <motion.a
                   key={label}
                   href={href}
-                  target={label !== "Email" ? "_blank" : undefined}
+                  target={label !== 'Email' ? '_blank' : undefined}
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -183,28 +159,30 @@ export default function Hero() {
                   transition={{
                     duration: 12 + i * 5,
                     repeat: Infinity,
-                    ease: "linear",
+                    ease: 'linear',
                   }}
                   className="absolute inset-0 rounded-full border border-indigo-500/20"
                   style={{
                     inset: `${i * 28}px`,
-                    borderStyle: i === 1 ? "dashed" : "solid",
+                    borderStyle: i === 1 ? 'dashed' : 'solid',
                     borderColor:
                       i === 0
-                        ? "rgba(99,102,241,0.3)"
+                        ? 'rgba(99,102,241,0.3)'
                         : i === 1
-                          ? "rgba(168,85,247,0.2)"
-                          : "rgba(236,72,153,0.15)",
+                          ? 'rgba(168,85,247,0.2)'
+                          : 'rgba(236,72,153,0.15)',
                   }}
                 />
               ))}
               {/* Center avatar */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.5 animate-float">
-                  <div className="w-full h-full rounded-2xl bg-dark-surface flex items-center justify-center">
-                    <span className="text-5xl font-bold font-heading gradient-text">
-                      A
-                    </span>
+                <div className="w-36 h-36 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-[2px] animate-float shadow-2xl shadow-purple-500/20">
+                  <div className="w-full h-full rounded-3xl overflow-hidden bg-dark-surface">
+                    <img
+                      src="/Images/Ankur_pic.jpg"
+                      alt="Ankur Pashine"
+                      className="w-full h-full object-cover object-top scale-105"
+                    />
                   </div>
                 </div>
               </div>
@@ -234,5 +212,5 @@ export default function Hero() {
         <FiArrowDown className="animate-bounce-arrow" size={18} />
       </div>
     </section>
-  );
+  )
 }
