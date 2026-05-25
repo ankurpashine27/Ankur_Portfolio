@@ -221,7 +221,7 @@ export const projectsData = [
       "Classic Snake game implemented in pure Java using Swing/AWT for graphics and game-loop logic. A hands-on exercise in object-oriented design, event handling, and real-time rendering.",
     techStack: ["Java", "Swing", "AWT", "OOP"],
     tags: ["Game", "Java"],
-    category: "backend",
+    category: "game",
     liveUrl: null,
     githubUrl: "https://github.com/ankurpashine27/snakes_java",
     color: "from-yellow-500 to-orange-500",

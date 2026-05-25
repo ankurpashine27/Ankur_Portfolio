@@ -9,7 +9,7 @@ const filters = [
   { id: "all", label: "All" },
   { id: "frontend", label: "Frontend" },
   { id: "fullstack", label: "Full Stack" },
-  { id: "opensource", label: "Open Source" },
+  { id: "game", label: "Games" },
 ];
 
 export default function Projects() {
