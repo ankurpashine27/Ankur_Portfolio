@@ -8,68 +8,71 @@ export default function Certificates() {
   return (
     <section
       id="certificates"
-      className="section-padding bg-white dark:bg-dark-bg"
+      className="section-padding bg-slate-50 dark:bg-dark-surface"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <SectionHeading
           subtitle="Certifications & Achievements"
           title="My Certificates"
           centered
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-3">
           {certificatesData.map((cert, i) => {
             const IconComponent = SiIcons[cert.icon];
+            const hasLink = cert.link && cert.link !== "#";
+
             return (
               <motion.div
                 key={cert.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="glass-card p-6 hover:border-primary/40 hover:shadow-glow-indigo transition-all duration-300"
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="flex items-center gap-4 px-4 py-3.5 rounded-xl bg-white dark:bg-dark-bg border border-slate-200 dark:border-dark-border border-l-[3px] hover:shadow-md transition-all duration-200 group"
+                style={{ borderLeftColor: cert.iconColor }}
               >
-                {/* Icon + badge */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-dark-border flex items-center justify-center">
-                    {IconComponent ? (
-                      <IconComponent
-                        size={24}
-                        style={{ color: cert.iconColor }}
-                      />
-                    ) : (
-                      <FiAward size={24} className="text-primary" />
-                    )}
-                  </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
-                    ✓ Completed
-                  </span>
+                {/* Icon box */}
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: `${cert.iconColor}18` }}
+                >
+                  {IconComponent ? (
+                    <IconComponent size={20} style={{ color: cert.iconColor }} />
+                  ) : (
+                    <FiAward size={20} style={{ color: cert.iconColor }} />
+                  )}
                 </div>
 
-                {/* Title */}
-                <h3 className="font-bold text-slate-900 dark:text-white font-heading text-sm leading-snug mb-2">
-                  {cert.title}
-                </h3>
+                {/* Title + issuer */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white leading-snug truncate">
+                    {cert.title}
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                    {cert.issuer}
+                  </p>
+                </div>
 
-                {/* Issuer + date */}
-                <p className="text-xs text-primary font-medium mb-0.5">
-                  {cert.issuer}
-                </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                {/* Year */}
+                <span className="text-xs font-medium text-slate-400 dark:text-slate-500 shrink-0">
                   {cert.date}
-                </p>
+                </span>
 
-                {/* Link */}
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
-                >
-                  View Certificate
-                  <FiExternalLink size={12} />
-                </a>
+                {/* View link */}
+                {hasLink ? (
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${cert.title} certificate`}
+                    className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-dark-border transition-colors"
+                  >
+                    <FiExternalLink size={14} />
+                  </a>
+                ) : (
+                  <div className="w-8 shrink-0" />
+                )}
               </motion.div>
             );
           })}

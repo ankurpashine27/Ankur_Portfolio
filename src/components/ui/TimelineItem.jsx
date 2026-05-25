@@ -1,29 +1,38 @@
 import { motion } from "framer-motion";
 
 export default function TimelineItem({ item, index }) {
-  const isEven = index % 2 === 0;
-
   return (
-    <div
-      className={`relative flex items-start gap-8 mb-12 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
-    >
-      {/* Center dot */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 z-10">
-        <div className="w-4 h-4 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 ring-4 ring-white dark:ring-dark-bg" />
+    <div className="relative flex items-start mb-14">
+
+      {/* ── Desktop: date label in left column ── */}
+      <div className="hidden md:flex w-1/4 shrink-0 flex-col items-end pr-8 pt-5">
+        <p className="text-xs font-semibold text-slate-600 dark:text-slate-300 text-right leading-snug">
+          {item.duration}
+        </p>
+        <p className="text-xs text-slate-400 dark:text-slate-500 text-right mt-1">
+          {item.location}
+        </p>
       </div>
 
-      {/* Mobile dot */}
-      <div className="md:hidden absolute left-0 top-6 z-10">
+      {/* ── Desktop: dot centered on the vertical line + horizontal connector ── */}
+      {/* Dot is -ml-2 so its center sits exactly at left-1/4 in the parent */}
+      <div className="hidden md:flex items-center mt-5 shrink-0 z-10">
+        <div className="-ml-2 w-4 h-4 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 ring-4 ring-white dark:ring-dark-bg" />
+        <div className="w-6 h-0.5 bg-gradient-to-r from-indigo-400/60 to-transparent" />
+      </div>
+
+      {/* ── Mobile: dot on the left ── */}
+      <div className="md:hidden absolute left-0 top-5 z-10">
         <div className="w-3 h-3 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 ring-4 ring-white dark:ring-dark-bg" />
       </div>
 
-      {/* Content */}
+      {/* ── Card ── */}
       <motion.div
-        initial={{ opacity: 0, x: isEven ? -60 : 60 }}
+        initial={{ opacity: 0, x: 40 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
-        className="w-full md:w-[calc(50%-2rem)] ml-6 md:ml-0 glass-card p-6 hover:border-primary/30 transition-colors"
+        className="flex-1 ml-6 md:ml-0 glass-card p-6 hover:border-primary/30 transition-colors"
       >
         {/* Header */}
         <div className="flex items-start gap-3 mb-4">
@@ -46,7 +55,8 @@ export default function TimelineItem({ item, index }) {
                 </span>
               )}
             </div>
-            <span className="text-xs text-slate-500 dark:text-slate-400">
+            {/* Duration shown on mobile only (desktop shows in left column) */}
+            <span className="md:hidden text-xs text-slate-500 dark:text-slate-400">
               {item.duration} · {item.location}
             </span>
           </div>
@@ -77,9 +87,6 @@ export default function TimelineItem({ item, index }) {
           ))}
         </div>
       </motion.div>
-
-      {/* Spacer for alternating layout */}
-      <div className="hidden md:block w-[calc(50%-2rem)]" />
     </div>
   );
 }
