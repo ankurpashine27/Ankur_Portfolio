@@ -29,24 +29,28 @@ export default function ProjectCard({ project }) {
             {title}
           </h3>
           <div className="flex items-center gap-2 ml-4 shrink-0">
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
-              aria-label={`${title} GitHub repository`}
-            >
-              <FiGithub size={18} />
-            </a>
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 text-slate-500 hover:text-primary transition-colors"
-              aria-label={`${title} live demo`}
-            >
-              <FiExternalLink size={18} />
-            </a>
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+                aria-label={`${title} GitHub repository`}
+              >
+                <FiGithub size={18} />
+              </a>
+            )}
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 text-slate-500 hover:text-primary transition-colors"
+                aria-label={`${title} live demo`}
+              >
+                <FiExternalLink size={18} />
+              </a>
+            )}
           </div>
         </div>
 
