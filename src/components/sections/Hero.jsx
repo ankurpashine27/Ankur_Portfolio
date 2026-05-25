@@ -63,10 +63,10 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-dark-bg dot-grid"
     >
-      {/* Background blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      {/* Background blobs — kept inside bounds so they don't cause horizontal overflow */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl animate-pulse pointer-events-none" />
       <div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-3xl animate-pulse pointer-events-none"
+        className="absolute bottom-1/4 right-0 w-64 h-64 md:w-80 md:h-80 md:right-1/4 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-3xl animate-pulse pointer-events-none"
         style={{ animationDelay: '1s' }}
       />
 

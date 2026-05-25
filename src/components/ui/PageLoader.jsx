@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 export default function PageLoader() {
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-full z-[100] flex items-center justify-center bg-dark-bg"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-dark-bg"
       initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: 0.4, delay: 1.1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -24,7 +24,7 @@ export default function PageLoader() {
         <motion.div
           className="mt-4 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
           initial={{ width: 0 }}
-          animate={{ width: "100%" }}
+          animate={{ width: "6rem" }}
           transition={{ duration: 0.8, delay: 0.2 }}
         />
       </motion.div>

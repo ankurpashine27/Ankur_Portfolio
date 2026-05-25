@@ -17,8 +17,13 @@
     font-family: "Space Grotesk", sans-serif;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-white dark:bg-dark-bg text-slate-800 dark:text-slate-100 transition-colors duration-300;
+    overflow-x: hidden;
   }
 
   ::-webkit-scrollbar {
