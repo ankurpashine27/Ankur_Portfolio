@@ -190,16 +190,30 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute top-4 -right-4 px-3 py-1.5 glass rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300"
+                className="absolute top-4 -right-6 px-3 py-1.5 glass rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300"
               >
                 React ⚛️
               </motion.div>
               <motion.div
                 animate={{ y: [6, -6, 6] }}
                 transition={{ duration: 3.5, repeat: Infinity }}
-                className="absolute bottom-8 -left-4 px-3 py-1.5 glass rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300"
+                className="absolute bottom-8 -left-6 px-3 py-1.5 glass rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300"
               >
-                Node.js 🟢
+                Java ☕
+              </motion.div>
+              <motion.div
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                className="absolute top-10 -left-8 px-3 py-1.5 glass rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300"
+              >
+                Python 🐍
+              </motion.div>
+              <motion.div
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 3.8, repeat: Infinity, delay: 1 }}
+                className="absolute bottom-4 -right-4 px-3 py-1.5 glass rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300"
+              >
+                AI 🤖
               </motion.div>
             </div>
           </motion.div>

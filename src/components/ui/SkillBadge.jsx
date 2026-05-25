@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion'
 import * as SiIcons from 'react-icons/si'
+import * as FaIcons from 'react-icons/fa'
+
+function resolveIcon(icon) {
+  if (!icon) return null
+  if (icon.startsWith('Fa')) return FaIcons[icon] ?? null
+  return SiIcons[icon] ?? null
+}
 
 export default function SkillBadge({ name, icon, color }) {
-  const IconComponent = SiIcons[icon]
+  const IconComponent = resolveIcon(icon)
 
   return (
     <motion.div

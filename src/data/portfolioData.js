@@ -80,7 +80,7 @@ export const skillsData = {
     {
       name: "Languages & Frameworks",
       skills: [
-        { name: "Java", icon: "SiJava", color: "#f89820" },
+        { name: "Java", icon: "FaJava", color: "#f89820" },
         { name: "Spring / SpringBoot", icon: "SiSpring", color: "#6DB33F" },
         { name: "JavaScript", icon: "SiJavascript", color: "#F7DF1E" },
         { name: "jQuery", icon: "SiJquery", color: "#0769AD" },
