@@ -339,7 +339,7 @@ export const certificatesData = [
     date: "2020",
     icon: "SiJava",
     iconColor: "#f89820",
-    link: "#", // [TODO] Add credential URL
+    link: "https://drive.google.com/file/d/1k9HGQzPUy8rk-4hxzVTcF6MCe3SNEuYB/view",
   },
   {
     id: 2,
@@ -348,7 +348,7 @@ export const certificatesData = [
     date: "2020",
     icon: "SiPython",
     iconColor: "#3776AB",
-    link: "#",
+    link: "https://drive.google.com/file/d/1K7IqIIMF8H2N1Ejo8U1IH04PlQFlu303/view",
   },
   {
     id: 3,
@@ -384,7 +384,7 @@ export const certificatesData = [
     date: "2023",
     icon: "SiReact",
     iconColor: "#61DAFB",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/certificate/W853PTVXMRCL",
   },
   {
     id: 7,
@@ -393,7 +393,7 @@ export const certificatesData = [
     date: "2023",
     icon: "SiBootstrap",
     iconColor: "#7952B3",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/certificate/XN54DZUZGM3Y",
   },
   {
     id: 8,
@@ -402,7 +402,25 @@ export const certificatesData = [
     date: "2022",
     icon: "SiCoursera",
     iconColor: "#0056D2",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/certificate/XGMMP7SRPAR9",
+  },
+  {
+    id: 9,
+    title: "Programming for Everybody (Getting Started with Python)",
+    issuer: "Coursera — University of Michigan",
+    date: "2021",
+    icon: "SiPython",
+    iconColor: "#3776AB",
+    link: "https://www.coursera.org/account/accomplishments/certificate/TD98W3TP9YHD",
+  },
+  {
+    id: 10,
+    title: "Introduction to Game Development",
+    issuer: "Coursera",
+    date: "2024",
+    icon: "SiUnity",
+    iconColor: "#cccccc",
+    link: "https://www.coursera.org/account/accomplishments/verify/4WUNKGYP88WP",
   },
 ];
 
